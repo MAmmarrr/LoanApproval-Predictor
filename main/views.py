@@ -3,7 +3,8 @@ import joblib
 import pandas as pd
 from . import utils
 
-reloadModel = joblib.load('main\MLmodel\LoanApprovalPrdictionModel.pk1')
+reloadModel = joblib.load(r'main\MLmodel\LoanApprovalPrdictionModel.pk1')
+
 def index(request):
     return render(request, 'main/index.html')
 
