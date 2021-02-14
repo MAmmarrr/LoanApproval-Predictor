@@ -1,0 +1,39 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+
+{% block title%}Result{%endblock%}
+{% block content %}
+ 
+  {%if rating%}
+   <div class="container">
+<blockquote class="blockquote text-center">
+  <p class="mb-0">SUCCESS!!!</p>
+  <footer class="blockquote-footer">Your Loan has been <a href="#"><cite title="Source Title">Approved</cite></a></footer>
+  <footer class="blockquote-footer">Model used for prediction <cite title="Source Title"><b>Naive Bayes</b></cite></footer>
+
+</blockquote>
+  </div>
+  <div class="container">
+    <img width="702" height="702" style="vertical-align:middle;margin:0px 180px;justify-center" src="{%static "main/illustration-cartoon-man-holds-accepted-contract-after-than-bank-approved-loan-buy-home_73635-93.jpg" %}">
+    </div>
+    {%else%}
+     <div class="container">
+<blockquote class="blockquote text-center">
+  <p class="mb-0">FAILED!!!</p>
+  <footer class="blockquote-footer">Your Loan has been <a href="#"><cite title="Source Title">Rejected</cite></a></footer>
+  <footer class="blockquote-footer">Model used for prediction <cite title="Source Title"><b>Naive Bayes</b></cite></footer>
+
+</blockquote>
+  </div>
+    {% endif %}
+
+{%block javascript%}
+    <script type="application/javascript">
+    
+    setTimeout(function() {
+     $.get("{% url 'main:index' %}") // Do something after 5 seconds
+    }, 5000);
+
+  </script>
+{%endblock javascript%}
+{% endblock %}

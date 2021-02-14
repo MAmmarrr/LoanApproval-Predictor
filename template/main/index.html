@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+
+{% block title%}Create an account{%endblock%}
+{%load crispy_forms_tags %}
+{% block content %}
+  <div class="container">
+<blockquote class="blockquote text-center">
+  <p class="mb-0">This Web Application uses machine learning, to predict if the applied loan will get approved or not.</p>
+  <footer class="blockquote-footer">In order to begin <a href="/form"><cite title="Source Title">Request Loan</cite></a></footer>
+</blockquote>
+  </div>
+  <div class="container">
+        <img src="{%static "main/20944141.jpg" %}">
+    </div>
+{% endblock %}

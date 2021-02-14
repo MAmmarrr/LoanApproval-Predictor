@@ -1,0 +1,107 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+{%if user.is_authenticated%}
+
+<h3>Applicant Details</h3>
+<form method="POST" action="/result/" class="form-group">
+
+    {% csrf_token %}
+  <div class="form-row">
+     <div class="form-group col-md-4">
+      <label for="inputName">Full Name</label>
+      <input placeholder="Enter"type="text" pattern="[A-Za-z]{1,32}"name="Name" class="form-control" id="inputDependents" title="Enter a valid name" required>
+    </div>
+     <div class="form-group col-md-4">
+      <label for="inputPhone">Phone</label>
+      <input type="text" class="form-control" pattern="03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}" placeholder="03##-#######"title="Please enter a valid contact" name="mobile_number" placeholder="Mobile Number" required>
+    </div>
+    </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputGender">Gender</label>
+      <select id="inputGender" class="form-control" name ="Gender" required="required">
+        <option selected value="">Choose...</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputMartialStatus">Martial Status</label>
+      <select id="inputMartialStatus" name="MartialStatus"class="form-control" required="required">
+        <option selected value="">Choose...</option>
+        <option>Married</option>
+        <option>Unmarried</option>
+      </select>
+    </div>
+    </div>
+
+  <div class="form-row">
+  
+    <div class="form-group col-md-4">
+      <label for="inputEducation">Education</label>
+      <select id="inputEducation" name="Education" class="form-control" required="required">
+        <option selected value="">Choose...</option>
+        <option>Graduate</option>
+        <option>Not Graduate</option>
+      </select>
+    </div>
+  
+    <div class="form-group col-md-2">
+      <label for="inputDependents">Number of dependents</label>
+      <select id="inputEducation" name="Dependents" class="form-control" required="required">
+        <option selected value="">Choose...</option>
+        <option>1-5</option>
+        <option>5-10</option>
+        <option>10+</option>
+        <option>None</option>
+
+
+      </select>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputSelfEmployeed">Are you self employeed</label>
+      <select id="inputSelfEmployeed" name="SelfEmployeed" class="form-control">
+        <option selected value="">Choose...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+    </div>
+    <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="inputLoanAmount">Loan Amount</label>
+      <input type="number" max=200 placeholder = "1000s Multiple- e.g: 20" title="Loan Limit 200k $"name="LoanAmount"class="form-control" id="inputLoanAmount" required>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputApplicantIncome">Annual Income</label>
+      <input type="number" min=1000 name="ApplicantIncome" placeholder="In Dollors" class="form-control" id="inputApplicantIncome" required>
+    </div>
+  <div class="form-group col-md-2">
+      <label for="inputProperty_Area">Your property area</label>
+      <select id="inputPropertyArea" name="PropertyArea" class="form-control" required>
+        <option selected value="">Choose...</option>
+        <option>Urban</option>
+        <option>Semi-Urban</option>
+        <option>Rural</option>
+      </select>
+    </div>
+    </div>
+  <button type="submit" class="btn btn-primary">Submit Form</button>
+    </div>
+    </form>
+  {% else %}
+  <blockquote class="blockquote text-center">
+    <p class="mb-0">You Must be logged in to make a Loan Request</p>
+    <footer class="blockquote-footer">In order to begin <a href="/login/"><cite title="Source Title">Log In</cite></a></footer>
+  </blockquote>
+  <div class="container">
+        <img src="{%static "main/20944201.jpg" %}" width="702" height="702" style="vertical-align:middle;margin:0px 180px;justify-center">
+    </div>
+    {% endif %}
+{% endblock %}
